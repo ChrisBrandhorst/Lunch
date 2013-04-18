@@ -23,6 +23,7 @@ end
 # Frontend
 gem 'jquery-rails'
 gem 'backbone-on-rails'
+gem 'i18n-js'
 
 # JSON templating
 gem 'rabl'

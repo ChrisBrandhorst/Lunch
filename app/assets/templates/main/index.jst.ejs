@@ -1,0 +1,8 @@
+<header>
+  <nav id="navigation">
+    <% _.each(sections, function(section){
+      var id = section.id;
+      %><a href="/<%=id%>" data-section="<%=id%>"><%= I18n.t('sections.' + id + '.title') %></a><%
+    }); %>
+  </nav>
+</header>

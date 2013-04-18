@@ -6,35 +6,44 @@ window.Lunch = {
   // Init
   initialize: function() {
 
-    Lunch.checkLogin();
+    // Check login on start
+    Lunch.ensureSession();
 
   },
 
 
-  //
-  checkLogin: function() {
-
+  // Check session at the server.
+  // If it exists, continue to start the app;
+  // Else, show the login screen
+  ensureSession: function() {
     Lunch.Models.Session.fetch({
       success: function() {
-        Lunch.afterLogin();
+        Lunch.start();
       },
       error: function() {
-        // TODO: show login screen
+        Lunch.Views.SessionsNew.show();
       }
     });
-
   },
 
 
-  // 
-  afterLogin: function() {
+  // Start the app
+  start: function() {
+
+    // Show the main page
+    Lunch.Views.Main.show();
     
+    // Init routers
+    new Lunch.Routers.Entries;
+
     // Init history tracking
     Backbone.history.start({pushState: true});
 
-    // TODO: init page
+    // Redirect to first tab if no fragment is present
+    if (Backbone.history.fragment == "")
+      // TODO: this ain't pretty!
+      Lunch.Views.Main.$el.find('#navigation > a').first().click();
   }
-
 
 };
 

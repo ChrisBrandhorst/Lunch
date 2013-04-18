@@ -1,11 +1,12 @@
 Lunch.Routers.Entries = Backbone.Router.extend({
 
   routes: {
-    'entries': 'index'
+    'entries(/)':     'index',
+    'entries/:date':  'index'
   },
 
-  index: function() {
-    
+  index: function(date) {
+    Lunch.Views.EntriesIndex.browse(date);
   }
 
 });

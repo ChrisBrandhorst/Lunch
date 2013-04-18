@@ -1,3 +1,9 @@
-&lt;&lt;
-Week ##
-&gt;&gt;
+<%
+var month1 = I18n.l('date.formats.month', date),
+    month2 = I18n.l('date.formats.month', date.clone().addDays(5)),
+    month = month1 + (month2 != month1 ? " / " + month2 : "");
+%>
+
+<a href="/entries/<%= date.clone().addWeeks(-1).toDataString() %>">&lt;&lt;</a>
+week <%= date.getISOWeek() %>, <%= month %>
+<a href="/entries/<%= date.clone().addWeeks(1).toDataString() %>">&gt;&gt;</a>

@@ -16,9 +16,14 @@ class User < ActiveRecord::Base
 
   # Whether this client is activated
   def is_activated?
-    return self.activation_token.nil?
+    self.activation_token.nil?
   end
 
+  # Activate this user
+  def activate!
+    self.activation_token = nil
+    self.save
+  end
 
   protected
 

@@ -1,13 +1,12 @@
 Lunch::Application.routes.draw do
-
+  
+  # Match every route
+  match '(*foo)' => 'application#index', :constraints => lambda{ |req| !req.xhr? }
 
   resource  :session, :only => [:show, :create, :destroy], :controller => 'session'
 
   resources :entries, :only => [:index, :create, :update]
   # match     'entries/:date' => 'entries#update', :via => :put, :date => /\d{4}-\d{2}-\d{2}/, :as => :entry_by_date
-
-  # Match every route
-  match '(*foo)' => 'application#index', :constraints => lambda{ |req| !req.xhr? }
 
 
   # The priority is based upon order of creation:

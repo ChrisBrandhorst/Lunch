@@ -1,0 +1,10 @@
+<%
+var entries = model.modelsForWeek(date);
+%>
+<ol>
+  <% _.each(entries, function(entry) { %>
+    <li>
+      <%= I18n.l('date.formats.dayDay', entry.get('date')) %>
+    </li>
+  <% }) %>
+</ol>

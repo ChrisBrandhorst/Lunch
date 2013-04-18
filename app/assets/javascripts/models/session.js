@@ -2,7 +2,7 @@
 Lunch.Models.Session = new (Backbone.Model.extend({
 
 
-  url: 'session',
+  url: '/session',
 
 
   // Log off the current user

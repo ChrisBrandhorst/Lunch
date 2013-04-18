@@ -1,11 +1,10 @@
 <header>
   <h1>
-    &lt;&lt;
-    Week ##
-    &gt;&gt;
+    <%= headerTemplate({date:date}) %>
   </h1>
-  Vandaag
+  <a href="/entries">Vandaag</a>
 </header>
 
-<ol>
-</ol>
+<div id="entries_list">
+  <%= listTemplate({model:model,date:date}) %>
+</div>
