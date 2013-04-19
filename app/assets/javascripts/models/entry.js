@@ -9,6 +9,11 @@ Lunch.Models.Entry = Backbone.Model.extend({
     var json = Backbone.Model.prototype.toJSON.apply(this, arguments);
     json.date = json.date.toDataString();
     return json;
+  },
+
+  toggleJoin: function() {
+    this.set('join', !this.get('join'));
+    return this;
   }
 
 });

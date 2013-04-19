@@ -61,6 +61,10 @@ module Lunch
 
     # Add backbone templates to assets pipeline
     config.assets.paths << "#{ Rails.root }/app/assets/templates"
+    config.assets.paths << "#{ Rails.root }/app/assets/fonts"
+    
+    # Precompile additional assets
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     # SASS config
     config.sass.preferred_syntax = :sass

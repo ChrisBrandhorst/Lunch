@@ -1,7 +1,8 @@
-<header>
-  <nav id="navigation">
-    <% _.each( _.pluck(sections, 'id'), function(id){
-      %><a href="/<%=id%>" data-section="<%=id%>"><%= I18n.t('sections.' + id + '.title') %></a><%
+<footer>
+  <nav id="navigation" class="with_icons">
+    <% _.each(sections, function(section){
+      var id = section.id;
+      %><a href="/<%=id%>" data-section="<%=id%>" class="<%=section.icon%>"></a><%
     }); %>
   </nav>
-</header>
+</footer>

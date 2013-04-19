@@ -28,6 +28,8 @@ Lunch.Collections.Entries = new (Backbone.Collection.extend({
     return this.filter(function(entry){
       return entry.get('date') >= minDate && entry.get('date') < maxDate;
     });
-  }
+  },
+
+  
 
 }));

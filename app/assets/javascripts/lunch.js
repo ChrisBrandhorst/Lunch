@@ -52,5 +52,9 @@ window.Lunch = {
 
 // Init app on page load
 $(document).ready(function(){
+
+  // Can't touch this
+  Hammer(document.body);
+
   Lunch.initialize();
 });

@@ -36,12 +36,13 @@ Lunch.Views.Main = new (Backbone.View.extend({
 
   //
   render: function() {
-    this.$el.html(this.template(this));
 
-    var $body = this.$el;
+    var $main = this.$el;
     _.each(this.sections, function(section){
-      section.render().$el.hide().appendTo($body);
+      section.render().$el.hide().appendTo($main);
     });
+
+    this.$el.append(this.template(this));
 
     return this;
   },
@@ -52,7 +53,9 @@ Lunch.Views.Main = new (Backbone.View.extend({
     var $a = $(ev.currentTarget);
     if ($a.hasClass('selected')) return false;
     var href = $a.attr('href').replace(/^\//,'').replace('\#\!\/','');
-    Backbone.history.navigate(href, {trigger:true});
+    if (Backbone.history.fragment != href)
+      Backbone.history.navigate(href, {trigger:true});
+    ev.preventDefault();
     return false;
   },
 

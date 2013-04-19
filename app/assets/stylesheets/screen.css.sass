@@ -6,8 +6,12 @@
  */
 
 /*
- *= require_self
- *= require_tree ./app
+ Here we do not use *= require_self and/or *= require_tree ./app.
+ Otherwise, we would have to import compass partials in every file, since
+ Sprockets will compile each file seperately.
  */
 
 @import compass/reset
+@import compass/css3
+
+@import "app/**/*"
