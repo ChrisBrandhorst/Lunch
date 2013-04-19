@@ -1,10 +1,13 @@
-<%
-var entries = model.modelsForWeek(date);
-%>
 <ol>
-  <% _.each(entries, function(entry) { %>
+  <% _.each(model.modelsForWeek(date), function(entry) { 
+    var d = entry.get('date').toDataString(); %>
     <li>
-      <%= I18n.l('date.formats.dayDay', entry.get('date')) %>
+      <%= I18n.l('date.formats.dayDay', d) %>
+
+      <input type="radio" name="entry_join_<%=d%>" date-id="<%=entry.id%>" data-date="<%=d%>" value="" />?
+      <input type="radio" name="entry_join_<%=d%>" date-id="<%=entry.id%>" data-date="<%=d%>" value="1" />Ja
+      <input type="radio" name="entry_join_<%=d%>" date-id="<%=entry.id%>" data-date="<%=d%>" value="0" />Nee
+      
     </li>
   <% }) %>
 </ol>

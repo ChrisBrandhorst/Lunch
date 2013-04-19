@@ -1,7 +1,6 @@
 <header>
   <nav id="navigation">
-    <% _.each(sections, function(section){
-      var id = section.id;
+    <% _.each( _.pluck(sections, 'id'), function(id){
       %><a href="/<%=id%>" data-section="<%=id%>"><%= I18n.t('sections.' + id + '.title') %></a><%
     }); %>
   </nav>

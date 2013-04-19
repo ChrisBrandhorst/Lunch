@@ -6,7 +6,10 @@ Lunch.Routers.Entries = Backbone.Router.extend({
   },
 
   index: function(date) {
-    Lunch.Views.EntriesIndex.browse(date);
+    // if (date)
+      Lunch.Views.EntriesIndex.browse(date);
+    // else
+    //   this.navigate("entries/" + Lunch.Views.EntriesIndex.date.toDataString(), {replace:true});
   }
 
 });

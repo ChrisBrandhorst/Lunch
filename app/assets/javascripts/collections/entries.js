@@ -7,7 +7,7 @@ Lunch.Collections.Entries = new (Backbone.Collection.extend({
   getWeekDate: function(date) {
     if (date instanceof Date)
       date = date.clone();
-    else if (_.isString(date))
+    else if (/^\d{4}-\d{2}-\d{2}$/.test(date))
       date = Date.parse(date);
     else
       date = Date.today();

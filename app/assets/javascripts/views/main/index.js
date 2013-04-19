@@ -49,7 +49,9 @@ Lunch.Views.Main = new (Backbone.View.extend({
 
   // Globally capture clicks and route them through Backbone's navigate method.
   pushState: function(ev) {
-    var href = $(ev.currentTarget).attr('href').replace(/^\//,'').replace('\#\!\/','');
+    var $a = $(ev.currentTarget);
+    if ($a.hasClass('selected')) return false;
+    var href = $a.attr('href').replace(/^\//,'').replace('\#\!\/','');
     Backbone.history.navigate(href, {trigger:true});
     return false;
   },
@@ -58,11 +60,21 @@ Lunch.Views.Main = new (Backbone.View.extend({
   // 
   activateSection: function(router, route, params) {
     var id        = Backbone.history.fragment.replace(/^\//, "").split("/")[0],
-        $section  = this.$el.children('section#' + id);
-    if ($section.length) {
-      $section.show().siblings('section').hide();
-      this.$el.find('#navigation > a[data-section=' + id + ']').addClass('selected').siblings().removeClass('selected');
-    }
+        active  = _.find(this.sections, function(s){ return s.id == id; });
+
+    if (!active) return;
+
+    _.each(this.sections, function(s){
+      if (s == active) {
+        s.$el.show();
+        Lunch.Views.Main.$el.find('#navigation > a[data-section=' + id + ']').addClass('selected');
+      }
+      else {
+        s.$el.hide();
+        Lunch.Views.Main.$el.find('#navigation > a[data-section=' + id + ']').addClass('remove');
+      }
+    });
+    this.activeSection = active;
   }
 
 
